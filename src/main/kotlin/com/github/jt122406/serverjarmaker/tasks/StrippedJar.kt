@@ -1,8 +1,9 @@
 package com.github.jt122406.serverjarmaker.tasks
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.SourceSetOutput
+import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.bundling.Jar
+import org.gradle.kotlin.dsl.get
 
 open class StrippedJar : DefaultTask() {
 
@@ -12,9 +13,10 @@ open class StrippedJar : DefaultTask() {
     }
 
 
-    fun createStrippedJar(set: SourceSetOutput) : Jar {
+
+    fun createStrippedJar() : Jar {
         val jar = project.tasks.create("strippedJar", Jar::class.java) {
-            from(set)
+            from(project.extensions.getByType(SourceSetContainer::class.java)["main"])
             exclude("assets/**", ".cache/**")
         }
         jar.archiveFileName.set("strippedJar.jar")

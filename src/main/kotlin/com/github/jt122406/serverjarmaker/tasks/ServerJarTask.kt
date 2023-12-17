@@ -2,12 +2,10 @@ package com.github.jt122406.serverjarmaker.tasks
 
 import net.fabricmc.loom.task.RemapJarTask
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.SourceSetOutput
 import org.gradle.api.tasks.TaskAction
 
 open class ServerJarTask : DefaultTask() {
 
-    private var jarName = "serverJar"
 
     init {
         group = "serverJar"
@@ -15,18 +13,15 @@ open class ServerJarTask : DefaultTask() {
     }
 
     @TaskAction
-    fun createServerJar(set : SourceSetOutput) {
-        val strippedJar = StrippedJar().createStrippedJar(set)
+    fun createServerJar() {
+        val strippedJar = StrippedJar().createStrippedJar()
         project.tasks.create("serverJar", RemapJarTask::class.java) {
             inputFile.set(strippedJar.archiveFile)
-            archiveFileName.set("$jarName.jar")
+            archiveFileName.set("ServerJar.jar")
         }
         StrippedJar().deleteStrippedJar(strippedJar)
     }
 
 
-    fun serverJarName(name : String) {
-        this.jarName = name
-    }
 
 }

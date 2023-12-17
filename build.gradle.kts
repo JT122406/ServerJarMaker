@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.jt122406"
-version = "1.0-SNAPSHOT"
+version = "1.0.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -36,6 +36,16 @@ kotlin.jvmToolchain(17)
 
 publishing {
     publications {
-        repositories.mavenLocal()
+        repositories {
+            mavenLocal()
+            maven {
+                name = "Generations-Maven"
+                url = uri("https://maven.generations.gg/snapshots")
+                credentials {
+                    username = project.properties["repoLogin"]?.toString()
+                    password = project.properties["repoPassword"]?.toString()
+                }
+            }
+        }
     }
 }
