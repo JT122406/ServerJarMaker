@@ -4,6 +4,7 @@ plugins {
     idea
     `java-gradle-plugin`
     `kotlin-dsl`
+    `maven-publish`
 }
 
 group = "com.github.jt122406"
@@ -22,13 +23,19 @@ dependencies {
 gradlePlugin {
     plugins {
         create("serverJarMaker") {
+            displayName = "Server Jar Maker"
+            description = "Creates a server jar without client resources"
             id = "server-jar-maker"
-            implementationClass = "com.github.jt122406.tasks.ServerJarMaker"
+            implementationClass = "com.github.jt122406.ServerJarMaker"
             tags.set(listOf("minecraft"))
         }
     }
 }
 
-kotlin {
-    jvmToolchain(17)
+kotlin.jvmToolchain(17)
+
+publishing {
+    publications {
+        repositories.mavenLocal()
+    }
 }
