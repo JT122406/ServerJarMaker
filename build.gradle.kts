@@ -26,7 +26,7 @@ gradlePlugin {
             displayName = "Server Jar Maker"
             description = "Creates a server jar without client resources"
             id = "server-jar-maker"
-            implementationClass = "com.github.jt122406.ServerJarMaker"
+            implementationClass = "com.github.jt122406.serverjarmaker.ServerJarMaker"
             tags.set(listOf("minecraft"))
         }
     }

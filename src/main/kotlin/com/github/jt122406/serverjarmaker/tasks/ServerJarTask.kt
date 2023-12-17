@@ -5,7 +5,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.SourceSetOutput
 import org.gradle.api.tasks.TaskAction
 
-class ServerJarTask : DefaultTask() {
+open class ServerJarTask : DefaultTask() {
 
     private var jarName = "serverJar"
 

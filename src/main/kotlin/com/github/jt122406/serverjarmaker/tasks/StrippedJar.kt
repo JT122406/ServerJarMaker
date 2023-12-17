@@ -15,7 +15,7 @@ open class StrippedJar : DefaultTask() {
     fun createStrippedJar(set: SourceSetOutput) : Jar {
         val jar = project.tasks.create("strippedJar", Jar::class.java) {
             from(set)
-            exclude("assets/**")
+            exclude("assets/**", ".cache/**")
         }
         jar.archiveFileName.set("strippedJar.jar")
         jar.from("src/main/custom")
