@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.21"
+    kotlin("jvm") version "1.9.22"
     java
     idea
     `java-gradle-plugin`
@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     implementation(gradleApi())
-    api("net.fabricmc:fabric-loom:1.4-SNAPSHOT")
+    api("net.fabricmc:fabric-loom:1.5-SNAPSHOT")
 }
 
 gradlePlugin {
